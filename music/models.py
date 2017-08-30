@@ -13,6 +13,9 @@ class Album(models.Model): #creates 4 columns behind the scenes. First class has
     genre = models.CharField(max_length=100)
     album_logo = models.CharField(max_length=1000) #url
 
+    def __str__(self):
+        return self.album_title + ' - ' + self.artist
+
 class Song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE) #ondelete, when album is delete, any songs go away too.
     file_type = models.CharField(max_length=10)
