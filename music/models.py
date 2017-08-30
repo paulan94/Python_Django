@@ -6,6 +6,7 @@ from django.db import models
 #python manage.py makemigrations music
 
 
+
 #Album red has prim key= 1
 class Album(models.Model): #creates 4 columns behind the scenes. First class has ID of 1
     artist = models.CharField(max_length=250)
@@ -20,3 +21,6 @@ class Song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE) #ondelete, when album is delete, any songs go away too.
     file_type = models.CharField(max_length=10)
     song_title=models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.song_title
