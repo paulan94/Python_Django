@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 from django.db import models
 
 # Create your models here.
-#python manage.py makemigrations music
+#python manage.py makemigrations music #makes changes
+# python manage.py migrate             #applies changes
 
 
 
@@ -21,6 +22,7 @@ class Song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE) #ondelete, when album is delete, any songs go away too.
     file_type = models.CharField(max_length=10)
     song_title=models.CharField(max_length=250)
+    is_favorite = models.BooleanField(default=False)
 
     def __str__(self):
         return self.song_title
