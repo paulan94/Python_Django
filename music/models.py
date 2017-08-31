@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.db import models
+from django.core.urlresolvers import reverse
+
 
 # Create your models here.
 #python manage.py makemigrations music #makes changes
@@ -14,6 +16,10 @@ class Album(models.Model): #creates 4 columns behind the scenes. First class has
     album_title = models.CharField(max_length=500)
     genre = models.CharField(max_length=100)
     album_logo = models.CharField(max_length=1000) #url
+
+    def get_absolute_url(self):
+        #take to detail view with the pk
+        return reverse('music:detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.album_title + ' - ' + self.artist
